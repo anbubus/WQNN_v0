@@ -29,7 +29,7 @@ for p in shuffle(params)
 
     try
         if ~isfile("./results/v02/ACTOR_CRITIC/learning-rate=$(learning_rate)_decay-rate=$(decay_rate)tuple-size=$(tuple_size)/checkpoint_5000.csv")
-            df = DataFrame(CSV.File("C:/Users/guien/OneDrive/Mestrado/Tese/src/data/real_scenario.csv"))
+            df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
 
             basemodel = policy_model.generate_Model(1320, tuple_size)
             models = [deepcopy(basemodel) for i in 1:5]

@@ -3,7 +3,7 @@ using DataFrames, Random
 include("utils/WQNN.jl")
 include("utils/WQNN_enviroment.jl")
 
-df = DataFrame(CSV.File("C:/Users/guien/OneDrive/Mestrado/Tese/src/data/real_scenario.csv"))
+df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
 
 day = Int(24*(60/15))
 

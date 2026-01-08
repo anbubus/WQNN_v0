@@ -26,7 +26,7 @@ for p in shuffle(params)
     epsilon, decay_rate, learning_rate, n_steps, tuple_size  = p
 
     day = Int(24*(60/15))
-    df = DataFrame(CSV.File("C:/Users/guien/OneDrive/Mestrado/Tese/src/data/real_scenario.csv"))
+    df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
     params_str = "epsilon=$(epsilon)_learning-rate=$(learning_rate)_decay-rate=$(decay_rate)_n_steps=$(n_steps)_tuple-size=$(tuple_size)"
     # try
         if ~isfile("./results/v02/SARSA/evaluation/$(params_str)/checkpoint_25.csv")

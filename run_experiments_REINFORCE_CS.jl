@@ -17,7 +17,7 @@ for tuple_size in [160, 320, 720, 10, 20, 40, 80]
     for decay_rate  in [0.5, 0.7, 0.9,0.98, 0.25 ]
         for learning_rate in [0.9, 0.7, 0.5, 0.25, 0.98]
                 day = Int(24*(60/15))
-                df = DataFrame(CSV.File("C:/Users/guien/OneDrive/Mestrado/Tese/src/data/real_scenario.csv"))
+                df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
                 # try
                     if ~isfile("./results/v02/REINFORCE/learning-rate=$(learning_rate)_decay-rate=$(decay_rate)tuple-size=$(tuple_size)/checkpoint_5000.csv")
                         basemodel = policy_model.generate_Model(1320, tuple_size)

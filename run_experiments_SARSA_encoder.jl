@@ -19,7 +19,7 @@ for tuple_size in [160, 320, 720, 10, 20, 40, 80]
         n_steps = 4
 
         day = Int(24*(60/15))
-        df = DataFrame(CSV.File("C:/Users/guien/OneDrive/Mestrado/Tese/src/data/real_scenario.csv"))
+        df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
 
         # try
         if ~isfile("./results/encoder/SARSA/epsilon=$(epsilon)_learning-rate=$(learning_rate)_decay-rate=$(decay_rate)_n_steps=$(n_steps)_encoder-size=$(encoder_size)_tuple-size=$(tuple_size)/checkpoint_2500.csv")

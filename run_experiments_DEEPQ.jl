@@ -15,7 +15,7 @@ for epsilon in Vector{Float32}([0.25, 0.5, 0.7, 0.9,0.98])
         for learning_rate in Vector{Float32}([0.98, 0.9, 0.7, 0.5, 0.25])
             for hidden_layer_size in Vector{Int64}([8, 16, 32, 64, 128])
                     day = Int(24*(60/15))
-                    df = DataFrame(CSV.File("C:/Users/guien/OneDrive/Mestrado/Tese/src/data/real_scenario.csv"))
+                    df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
 
                     # try
                         if ~isfile("./results/v02/DEEPQ/epsilon=$(epsilon)_learning-rate=$(learning_rate)_decay-rate=$(decay_rate)_hidden-size=$(hidden_layer_size)/checkpoint_2500.csv")
