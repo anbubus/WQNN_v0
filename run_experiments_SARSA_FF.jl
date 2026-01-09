@@ -1,3 +1,5 @@
+# Exploring the forget_factor
+
 using DataFrames, Random, CSV
 include("utils/SARSA.jl")
 using .forget_model
@@ -12,9 +14,11 @@ params = []
 for epsilon in [0.25, 0.5, 0.7, 0.9,0.98]
     for decay_rate  in [0.25, 0.5, 0.7, 0.9,0.98]
         for learning_rate in [0.98, 0.9, 0.7, 0.5, 0.25]
-            for n_steps in [1, 2, 4, 8, 16]
-                for tuple_size in [10, 20, 40, 80, 160, 320, 720]
-                    push!(params, (epsilon, decay_rate, learning_rate, n_steps, tuple_size))
+            for forget_factor in [0.25, 0.5, 0.7, 0.9, 0.98]
+                for n_steps in [1, 2, 4, 8, 16]
+                    for tuple_size in [10, 20, 40, 80, 160, 320, 720]
+                        push!(params, (epsilon, decay_rate, learning_rate, forget_factor, n_steps, tuple_size))
+                    end
                 end
             end
         end
@@ -22,15 +26,15 @@ for epsilon in [0.25, 0.5, 0.7, 0.9,0.98]
 end
 
 for p in shuffle(params)
-    epsilon, decay_rate, learning_rate, n_steps, tuple_size  = p
+    epsilon, decay_rate, learning_rate, forget_factor, n_steps, tuple_size  = p
 
     day = Int(24*(60/15))
     df = DataFrame(CSV.File("C:/Users/ig0rm/Documents/IC-Wisard/local_codes_tests/WQNN-main/WQNN-main/data/real_scenario.csv"))
-    params_str = "epsilon=$(epsilon)_learning-rate=$(learning_rate)_decay-rate=$(decay_rate)_n_steps=$(n_steps)_tuple-size=$(tuple_size)"
+    params_str = "epsilon=$(epsilon)_learning-rate=$(learning_rate)_decay-rate=$(decay_rate)_n_steps=$(n_steps)_forget-factor=$(forget_factor)_tuple-size=$(tuple_size)"
     # try
         if ~isfile("./results/v02/SARSA/evaluation/$(params_str)/checkpoint_25.csv")
 
-            models = [forget_model.generate_Model(1320, tuple_size, learning_rate) for i in 1:5]
+            models = [forget_model.generate_Model(1320, tuple_size, forget_factor) for i in 1:5]
 
             encoders = get_encoders(df)
             @info (params_str)
